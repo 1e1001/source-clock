@@ -1,0 +1,6 @@
+io:
+	A4 → screen SDA
+	A5 → screen SCL
+	2 → gps sdd? pps!
+	3 → gps rx (moved to 1)
+	4 → gps tx (moved to 0)

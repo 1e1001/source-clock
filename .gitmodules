@@ -1,0 +1,3 @@
+[submodule "libi2c"]
+	path = libi2c
+	url = https://github.com/Sovichea/avr-i2c-library.git
