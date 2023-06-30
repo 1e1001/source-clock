@@ -24,9 +24,9 @@
 #define FTL 0
 // end config
 
-#define TZ_HW (TZ_H % 24)
+#define TZ_HW ((TZ_H + 24) % 24)
 #if TZ_M != 0
-#define TZ_MW (TZ_M % 60)
+#define TZ_MW ((TZ_M + 60) % 60)
 #define TZ_MU (60 - TZ_MW)
 #endif
 
@@ -98,7 +98,7 @@ int main() {
 			hour += TZ_HW;
 			#ifdef TZ_MW
 			if (minute < TZ_MW)
-				hour--;
+				hour += 23;
 			if (minute >= TZ_MU)
 				hour++;
 			#endif
@@ -135,6 +135,7 @@ int main() {
 			#else
 			buf[N(1)] = digit_lut[hour / 10]; // d0
 			#endif
+			// printf("\n%d %d %d %d %d\n", buf[1], buf[3], buf[5], buf[7], buf[9]);
 			tw_transmit(D_ADDR, buf, 10);
 		}
 	}
