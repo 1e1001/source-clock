@@ -85,8 +85,14 @@ int main() {
 
 	// message parsing
 	for (;;) {
-		if (uart_getc() == '$') {
-			while (uart_getc() != ',');
+		if (uart_getc() == '$'
+			&& uart_getc() == 'G'
+			&& uart_getc() == 'P'
+			&& uart_getc() == 'R'
+			&& uart_getc() == 'M'
+			&& uart_getc() == 'C'
+			&& uart_getc() == ','
+		) {
 			#define GET_D (uart_getc() - '0')
 			#define GET_D16 ((uint16_t)(uart_getc() - '0'))
 			char hour = GET_D * 10 + GET_D;
